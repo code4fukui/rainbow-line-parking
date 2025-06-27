@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+<title>レインボーライン 駐車場ゲートオープンデータ</title>
+</head><body>
+<h1>レインボーライン 駐車場ゲートオープンデータ</h1>
+
+<div id=chart></div>
+
+<script type="module">
+import { LineChartSVG } from "https://code4fukui.github.io/svg-chart/LineChartSVG.js";
+//import { LineChartSVG } from "./LineChartSVG.js";
+import { CSV } from "https://js.sabae.cc/CSV.js";
+
+const fetchData = async (fn) => {
+  const org = await CSV.fetchJSON(fn);
+  const data = {};
+  for (const item of org) {
+    if (!item["aggregate from"]) continue;
+    const dt = item["aggregate from"].substring(0, 10);
+    data[dt] = item["total count"];
+  }
+  return data;
+};
+
+const sum = (d1, d2) => {
+  const res = {};
+  const p = s => {
+    if (s === undefined) return 0;
+    const n = parseInt(s);
+    if (isNaN(n)) {
+      console.log("nan", s)
+      return 0;
+    }
+    return n;
+  };
+  for (const item in d1) {
+    res[item] = p(d1[item]) + p(d2[item]);
+  }
+  return res;
+};
+
+const debug = false;
+
+const getURL = (n) => {
+  if (debug) {
+    return `gate${n}.csv`;
+  } else {
+    //return `https://code4fukui.github.io/fukui-kanko-people-flow-data/full/rainbow-line-parking-lot-${n}-gate/LicensePlate.csv`;
+    return `https://code4fukui.github.io/fukui-kanko-people-flow-visualization/rainbow-line-parking-lot-${n}-gate/LicensePlate.csv`;
+  }
+};
+
+const gate1 = await fetchData(getURL(1));
+const gate2 = await fetchData(getURL(2));
+
+const data = {};
+data["合計"] = sum(gate1, gate2);
+data["ゲート1"] = gate1;
+data["ゲート2"] = gate2;
+
+const colors = ["red", "blue", "green"];
+chart.appendChild(new LineChartSVG({
+  width: 1000,
+  height: 500,
+  data,
+  colors,
+}));
+
+</script>
+
+<hr>
+Data: <a href=https://github.com/code4fukui/fukui-kanko-people-flow-data>福井県観光DX AIカメラオープンデータ</a> → <a href=https://github.com/code4fukui/fukui-kanko-people-flow-visualization/>福井県観光DX AIカメラオープンデータ 可視化ウェブアプリケーション</a><br>
+<a href=https://github.com/code4fukui/raindow-line-parking/>src on GitHub</a><br>
+
+<style>
+body {
+  font-family: sans-serif;
+}
+a {
+  color: gray !important;
+}
+</style>
+
+</body></html>
