@@ -8,8 +8,8 @@
 
 可視化ページは、定期的に更新される以下のCSVファイルから直接データを取得します：
 
-- **ゲート1:** `https://code4fukui.github.io/fukui-kanko-people-flow-visualization/rainbow-line-parking-lot-1-gate/LicensePlate.csv`
-- **ゲート2:** `https://code4fukui.github.io/fukui-kanko-people-flow-visualization/rainbow-line-parking-lot-2-gate/LicensePlate.csv`
+- **ゲート1:** `~~https://code4fukui.github.io/fukui-kanko-people-flow-visualization/rainbow-line-parking-lot-1-gate/LicensePlate.csv`~~ *(unavailable)*
+- **ゲート2:** `~~https://code4fukui.github.io/fukui-kanko-people-flow-visualization/rainbow-line-parking-lot-2-gate/LicensePlate.csv`~~ *(unavailable)*
 
 ## 使い方
 

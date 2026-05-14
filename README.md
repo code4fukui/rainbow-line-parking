@@ -10,8 +10,8 @@ The live visualization displays an interactive SVG line chart showing the daily 
 
 The visualization fetches data directly from the following CSV files, which are updated periodically:
 
--   **Gate 1:** `https://code4fukui.github.io/fukui-kanko-people-flow-visualization/rainbow-line-parking-lot-1-gate/LicensePlate.csv`
--   **Gate 2:** `https://code4fukui.github.io/fukui-kanko-people-flow-visualization/rainbow-line-parking-lot-2-gate/LicensePlate.csv`
+-   **Gate 1:** `~~https://code4fukui.github.io/fukui-kanko-people-flow-visualization/rainbow-line-parking-lot-1-gate/LicensePlate.csv`~~ *(unavailable)*
+-   **Gate 2:** `~~https://code4fukui.github.io/fukui-kanko-people-flow-visualization/rainbow-line-parking-lot-2-gate/LicensePlate.csv`~~ *(unavailable)*
 
 ## Usage
 
